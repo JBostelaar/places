@@ -12,7 +12,11 @@ const c          = gutil.colors;
 
 
 gulp.task('scripts', () => {
-	const bundler = browserify('./src/client/scripts/index.js', { debug: true}).transform(babel);
+	const bundler = browserify(
+			'./src/client/app.js', {
+			extensions: ['.jsx'],
+			debug: true}
+		).transform("babelify", {presets: ["es2015", "react"]});
 
 	if(gutil.env.dev){
 		watchify(bundler);
@@ -21,13 +25,13 @@ gulp.task('scripts', () => {
 	function bundle(){
 	    bundler.bundle()
 			.on('error', function(err) { console.error(err); this.emit('end'); })
-			.pipe(source('app.min.js'))
+			.pipe(source('bundle.js'))
 			.pipe(buffer())
 			.pipe(sourcemaps.init({ loadMaps: true }))
 			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest('./dist/client/scripts'));
+			.pipe(gulp.dest('./dist/client'));
 	}
-  	
+
 	bundler.on('update', () => {
 		gutil.log(c.yellow('Bundling scripts ..'));
 		bundle();
