@@ -1,6 +1,11 @@
 'use strict';
 
 import React from 'react';
-import renderPage from './utils/renderPage';
+import {render} from 'react-dom';
+import App from 'client/components/App';
 
-renderPage();
+export default function renderPage() {
+	render(
+		<App/>, document.getElementById('app')
+	);
+}
