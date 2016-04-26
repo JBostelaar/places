@@ -2,13 +2,13 @@
 
 const gulp = require('gulp');
 
-/**
- * Symlink app into node_modules
- */
 gulp.task('symlink', [ 'babel' ], () => {
 	const symlink = require('gulp-symlink');
-	const mergeStream = require('merge-stream');
-		
-	return mergeStream(gulp.src('./dist')
-		.pipe(symlink('node_modules/app', { force: true })));
+
+	const streams = ['client', 'server'].map(dir => (
+        gulp.src(`dist/${dir}`)
+            .pipe(symlink(`node_modules/${dir}`, { force: true }))
+    ));
+
+    return require('merge-stream')(streams);
 });
