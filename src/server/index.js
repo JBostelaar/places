@@ -1,14 +1,19 @@
-'use static';
+import express from 'express';
+import React from 'react';
+import App from 'client/components/App';
+import { renderToString } from 'react-dom/server';
+import renderFullPage from './utils/renderFullPage';
 
-import express  from 'express';
 const app = express();
 
 app.use(express.static('dist/client'));
 
-app.get('/', function (req, res) {
-	res.sendfile('dist/client/templates/index.html');
+app.get('*', (req, res) => {
+	res.send(renderFullPage(
+		renderToString(<App />)
+	));
 });
 
-app.listen(3000, function () {
+app.listen(3000, () => {
 	console.log('Listening on port 3000');
 });
