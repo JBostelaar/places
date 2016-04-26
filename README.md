@@ -17,6 +17,8 @@ Branch name: `js_vanilla`
 ##React Complete
 Branch name: `react`
 
+Includes server-side rendering.
+
 ####Packages
 * React
 * React Router
@@ -25,19 +27,25 @@ Branch name: `react`
 * Browserify
 * Babel
 * SCSS
+* ESLint
 
 ##React Simple
 Branch name: `react_simple`
 
+Includes server-side rendering.
+
 ####Packages
 * React
 * Gulp
 * Browserify
 * Babel
 * SCSS
+* ESLint
 
 ##React Router
 Branch name: `react_router`
+
+Includes server-side rendering.
 
 ####Packages
 * React
@@ -46,9 +54,12 @@ Branch name: `react_router`
 * Browserify
 * Babel
 * SCSS
+* ESLint
 
 ##React Redux
 Branch name: `react_redux`
+
+Includes server-side rendering.
 
 ####Packages
 * React
@@ -57,3 +68,4 @@ Branch name: `react_redux`
 * Browserify
 * Babel
 * SCSS
+* ESLint
