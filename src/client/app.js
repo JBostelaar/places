@@ -1,9 +1,11 @@
+import App from 'client/components/App';
+import history from 'client/utils/history';
 import React from 'react';
 import { render } from 'react-dom';
-import App from 'client/components/App';
+import { Router, Route } from 'react-router';
 
-export default function renderPage() {
-	render(
-		<App />, document.getElementById('app')
-	);
-}
+render((
+	<Router history={history}>
+		<Route path="/" component={App} />
+	</Router>
+), document.getElementById('app'));
