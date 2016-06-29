@@ -1,30 +1,25 @@
-'use strict';
+/* eslint-disable global-require */
 
-const babel      = require('babelify');
 const browserify = require('browserify');
-const buffer     = require('vinyl-buffer');
-const gulp       = require('gulp');
-const gutil      = require('gulp-util');
-const source     = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const gulp = require('gulp');
+const gutil = require('gulp-util');
+const source = require('vinyl-source-stream');
 const sourcemaps = require('gulp-sourcemaps');
-const watchify   = require('watchify');
-const c          = gutil.colors;
+const watchify = require('watchify');
+const c = gutil.colors;
 
 
 gulp.task('scripts', () => {
-	const bundler = browserify(
-			'./src/client/app.js', {
-			extensions: ['.jsx'],
-			debug: true}
-		).transform("babelify", {presets: ["es2015", "react"]});
+	const bundler = browserify('./src/client/app.js', {
+		extensions: ['.jsx'],
+		debug: true,
+		transform: [require('babelify')],
+	});
 
-	if(gutil.env.dev){
-		watchify(bundler);
-	}
-
-	function bundle(){
-	    bundler.bundle()
-			.on('error', function(err) { console.error(err); this.emit('end'); })
+	function bundle() {
+		bundler.bundle()
+			.on('error', function handleError(err) { console.error(err); this.emit('end'); })
 			.pipe(source('bundle.js'))
 			.pipe(buffer())
 			.pipe(sourcemaps.init({ loadMaps: true }))
@@ -32,10 +27,14 @@ gulp.task('scripts', () => {
 			.pipe(gulp.dest('./dist/client'));
 	}
 
-	bundler.on('update', () => {
-		gutil.log(c.yellow('Bundling scripts ..'));
-		bundle();
-    });
+	if (gutil.env.dev) {
+		watchify(bundler);
 
-    bundle();
+		bundler.on('update', () => {
+			gutil.log(c.yellow('Bundling scripts ..'));
+			bundle();
+		});
+	}
+
+	bundle();
 });
