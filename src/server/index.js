@@ -1,8 +1,8 @@
+import App from 'app/components/App';
 import express from 'express';
 import React from 'react';
-import App from 'client/components/App';
 import { renderToString } from 'react-dom/server';
-import renderFullPage from './utils/renderFullPage';
+import renderFullPage from 'server/utils/renderFullPage';
 
 const app = express();
 
@@ -15,5 +15,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(3000, () => {
-	console.log('Listening on port 3000');
+	console.info('Listening on port 3000');
 });
