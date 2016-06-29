@@ -28,13 +28,11 @@ gulp.task('scripts', () => {
 	}
 
 	if (gutil.env.dev) {
-		watchify(bundler);
-
-		bundler.on('update', () => {
+		watchify(bundler).on('update', () => {
 			gutil.log(c.yellow('Bundling scripts ..'));
 			bundle();
 		});
 	}
 
-	bundle();
+	return bundle();
 });

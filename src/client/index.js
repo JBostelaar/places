@@ -1,10 +1,14 @@
-import App from 'app/components/App';
+import store from 'app/store';
+import getRoutes from 'app/utils/getRoutes';
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
+import { Router, browserHistory } from 'react-router';
+
+window.store = store;
 
 render((
-	<Router history={browserHistory}>
-		<Route path="/" component={App} />
-	</Router>
+	<Provider store={store}>
+		<Router children={getRoutes()} history={browserHistory} />
+	</Provider>
 ), document.getElementById('app'));
