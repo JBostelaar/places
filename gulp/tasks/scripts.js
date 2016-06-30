@@ -10,9 +10,9 @@ const watchify = require('watchify');
 const c = gutil.colors;
 
 
-gulp.task('scripts', () => {
+gulp.task('scripts', ['babel', 'symlink'], () => {
 	const bundler = browserify('./src/client/index.js', {
-		extensions: ['.jsx'],
+		extensions: ['.js', '.jsx'],
 		debug: true,
 		transform: [require('babelify')],
 	});

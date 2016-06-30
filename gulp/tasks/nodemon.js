@@ -4,7 +4,7 @@ const gulp = require('gulp');
 const gutil = require('gulp-util');
 const c = gutil.colors;
 
-gulp.task('nodemon', ['babel'], (cb) => {
+gulp.task('nodemon', ['babel', 'symlink'], (cb) => {
 	const nodemon = require('nodemon');
 
 	nodemon({
