@@ -24,7 +24,7 @@ gulp.task('scripts', ['babel', 'symlink'], () => {
 			.pipe(buffer())
 			.pipe(sourcemaps.init({ loadMaps: true }))
 			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest('./dist/client'));
+			.pipe(gulp.dest('./dist/public/assets/js'));
 	}
 
 	if (gutil.env.dev) {

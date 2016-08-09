@@ -9,7 +9,7 @@ import renderFullPage from 'server/utils/renderFullPage';
 
 const app = express();
 
-app.use(express.static('dist/client'));
+app.use(express.static('dist/public/assets'));
 
 app.use((req, res, next) => {
 	const routes = getRoutes();
