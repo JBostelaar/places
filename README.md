@@ -13,4 +13,5 @@ Includes server-side rendering.
 * Browserify
 * Babel
 * SCSS
+* SVG Sprites
 * ESLint
