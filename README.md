@@ -1,14 +1,10 @@
-#React boilerplate
-
-##Usage
-Clone this repository to your folder.
-
+#React Boilerplate
 Includes server-side rendering.
 
 ####Packages
 * React
-* React Router
 * Redux
+* React Router
 * Gulp
 * Browserify
 * Babel
