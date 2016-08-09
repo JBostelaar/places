@@ -24,7 +24,7 @@ function run(src) {
 }
 
 gulp.task('svg', () => {
-	const src = 'src/images/svg/*.svg';
+	const src = 'src/app/images/svg/*.svg';
 
 	if (gutil.env.dev) {
 		gutil.log(`${c.cyan('icons')}: watching`);
