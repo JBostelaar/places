@@ -1,1 +1,1 @@
-export session from 'app/reducers/session';
+export places from 'app/actions/places';

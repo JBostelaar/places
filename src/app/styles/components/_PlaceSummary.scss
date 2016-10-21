@@ -1,0 +1,55 @@
+.place {
+	width: 100%;
+	border-bottom: 1px solid #e8e8e8;
+	height: 85px;
+
+	a {
+		text-decoration: none;
+		display: flex;
+		height: 85px;
+		align-items: center;
+	}
+
+	&__category {
+		width: 85px;
+		display: flex;
+		justify-content: center;
+	}
+
+	&__meta {
+		flex-grow: 1;
+	}
+
+	&__title {
+		color: #333;
+		margin: 0;
+		font-weight: bold;
+		font-size: 20px;
+	}
+
+	&__region {
+		color: #aaa;
+		font-weight: 100;
+		font-size: 14px;
+		letter-spacing: 1px;
+	}
+
+	&__rating {
+		width: 85px;
+		display: flex;
+		justify-content: center;
+	}
+
+	&__score {
+		margin-right: 4px;
+		font-size: 20px;
+	}
+
+	&__no-score {
+		display: block;
+		width: 10px;
+		height: 10px;
+		background: #F5A623;
+		border-radius: 100%;
+	}
+}

@@ -1,0 +1,24 @@
+.select-region {
+	&__options {
+		width: 100%;
+		display: flex;
+		margin-bottom: 20px;
+	}
+
+	a {
+		text-decoration: none;
+		flex-grow: 1;
+		text-align: center;
+		background: #f8f8f8;
+		margin: 2px;
+		height: 45px;
+		line-height: 45px;
+		border-radius: 6px;
+		color: #999;
+
+		&.active {
+			background: $c-primary;
+			color: #fff;
+		}
+	}
+}

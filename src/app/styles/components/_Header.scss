@@ -1,0 +1,29 @@
+.header {
+	position: fixed;
+	top: 0;
+	height: 60px;
+	background: #FFFFFF;
+	width: 100%;
+	line-height: 60px;
+	border-bottom: 1px solid #e8e8e8;
+
+	&__title {
+		font-size: 18px;
+		text-align: center;
+		color: $c-primary;
+		margin: 0;
+	}
+
+	&__add {
+		text-decoration: none;
+		position: absolute;
+		right: 20px;
+		top: 0;
+		font-size: 30px;
+		color: $c-primary;
+	}
+
+	&__add-icon {
+		font-style: normal;
+	}
+}

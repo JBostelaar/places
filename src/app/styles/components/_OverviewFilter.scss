@@ -1,0 +1,22 @@
+.overview-filter {
+	height: 60px;
+	display: flex;
+
+	&__item {
+		width: 50%;
+		display: block;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+		color: #AAAAAA;
+		line-height: 60px;
+		border-bottom: 2px solid #F2F2F2;
+		font-size: 14px;
+		letter-spacing: 1px;
+
+		&--active {
+			color: #333;
+			border-bottom: 3px solid $c-primary;
+		}
+	}
+}

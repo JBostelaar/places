@@ -1,0 +1,13 @@
+.add-place {
+	padding: 20px;
+
+	&__submit {
+		background: $c-primary;
+		color: #fff;
+		border-radius: 6px;
+		display: block;
+		border: none;
+		width: 100%;
+		padding: 10px 0;
+	}
+}

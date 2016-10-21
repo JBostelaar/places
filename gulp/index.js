@@ -4,7 +4,7 @@ const gutil = require('gulp-util');
 
 globby.sync(`${__dirname}/tasks/*.js`).forEach(task => require(task));
 
-const tasks = ['babel', 'scripts', 'styles', 'symlink', 'images', 'svg'];
+const tasks = ['babel', 'scripts', 'styles', 'symlink', 'images'];
 
 if (gutil.env.dev) {
 	tasks.push('nodemon');

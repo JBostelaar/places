@@ -1,15 +1,24 @@
 import App from 'app/components/App';
-import Login from 'app/components/Login';
+import OverviewContainer from 'app/components/OverviewContainer';
+import AddPlaceContainer from 'app/components/AddPlaceContainer';
+import PlaceContainer from 'app/components/PlaceContainer';
 
 export default function getRoutes() {
 	return [
 		{
 			component: App,
 			path: '/',
-		},
-		{
-			component: Login,
-			path: '/login',
+			indexRoute: { component: OverviewContainer },
+			childRoutes: [
+				{
+					component: AddPlaceContainer,
+					path: '/add',
+				},
+				{
+					component: PlaceContainer,
+					path: '/places/:name',
+				},
+			],
 		},
 	];
 }

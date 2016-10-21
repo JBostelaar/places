@@ -5,13 +5,14 @@
   "author": "jornbostelaar",
   "license": "MIT",
   "dependencies": {
+    "classnames": "^2.2.5",
     "express": "^4.13.4",
     "history": "^2.1.1",
     "normalize.css": "^3.0.3",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
-    "react-router": "^2.4.0",
+    "react-router": "^2.8.0",
     "redux": "^3.5.2"
   },
   "devDependencies": {

@@ -1,1 +1,12 @@
 @import '../../../node_modules/normalize.css/normalize';
+
+@import 'variables';
+@import 'layout';
+
+//Components
+@import 'components/OverviewFilter';
+@import 'components/SelectRegion';
+@import 'components/PlaceSummary';
+@import 'components/Header';
+@import 'components/Input';
+@import 'components/AddPlace';
