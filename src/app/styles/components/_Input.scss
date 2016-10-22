@@ -12,6 +12,7 @@ input {
 	outline: none;
 	padding: 0 20px;
 	box-sizing: border-box;
+	-webkit-appearance: none;
 
 	&:focus {
 		border: 2px solid $c-primary;

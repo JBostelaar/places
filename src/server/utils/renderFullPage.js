@@ -11,7 +11,7 @@ export default function renderFullPage(html) {
 			<link rel="stylesheet" href="/css/style.css?v=${pkg.version}">
 
 			<meta name="apple-mobile-web-app-capable" content="yes">
-			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		</head>
 		<body>
 			<div id="app">${html}</div>

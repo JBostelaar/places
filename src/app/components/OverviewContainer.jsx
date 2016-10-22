@@ -3,19 +3,42 @@ import PlaceSummary from 'app/components/PlaceSummary';
 import OverviewFilter from 'app/components/OverviewFilter';
 import { connect } from 'react-redux';
 
-export function OverviewContainer({ places }) {
-	return (
-		<div className="overview">
-			<OverviewFilter />
-			<section className="places">
-				{places.places.length ? places.places.map(place => (
-					<PlaceSummary place={place} key={place.name} />
-				)) : (
-					<p>Nog geen places.</p>
-				)}
-			</section>
-		</div>
-	);
+export class OverviewContainer extends React.Component {
+	constructor() {
+		super();
+
+		this.state = {
+			activeList: 'all',
+		};
+
+		this.changeList = this.changeList.bind(this);
+	}
+
+	changeList(activeList) {
+		this.setState({ activeList });
+	}
+
+	render() {
+		const { places } = this.props;
+		let array = places.places;
+
+		if (this.state.activeList === 'togo') {
+			array = array.filter(place => !place.visited);
+		}
+
+		return (
+			<div className="overview">
+				<OverviewFilter changeList={this.changeList} activeList={this.state.activeList} />
+				<section className="places">
+					{array.length ? array.map(place => (
+						<PlaceSummary place={place} key={place.name} />
+					)) : (
+						<p>Geen places.</p>
+					)}
+				</section>
+			</div>
+		);
+	}
 }
 
 export default connect(state => ({

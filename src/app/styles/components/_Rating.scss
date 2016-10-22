@@ -1,0 +1,22 @@
+.rating-field {
+	margin-bottom: 40px;
+
+	label {
+		display: block;
+		text-align: center;
+		font-size: 14px;
+		color: #878787;
+	}
+}
+
+.rating {
+	display: flex;
+	justify-content: space-around;
+	width: 200px;
+	margin: 10px auto 0;
+
+	img {
+		height: 30px;
+		width: 22px;
+	}
+}
