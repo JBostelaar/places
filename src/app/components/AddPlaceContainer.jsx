@@ -46,7 +46,8 @@ export class AddPlaceContainer extends React.Component {
 		this.setState({ visited: !this.state.visited });
 	}
 
-	addPlace() {
+	addPlace(e) {
+		e.preventDefault();
 		const region = this.regions.find(reg => reg.name === this.refs.region.state.value);
 
 		const place = {
@@ -63,13 +64,15 @@ export class AddPlaceContainer extends React.Component {
 	render() {
 		return (
 			<section className="add-place">
-				<Input name="name" type="text" ref="name" label="Naam" />
-				<SelectRegion name="region" options={this.regions} ref="region" />
-				<Toggle ref="visited" toggleVisited={this.toggleVisited} label="Bezocht" />
-				{this.state.visited ? (
-					<Rating ref="rating" />
-				) : null}
-				<button type="submit" className="add-place__submit" onClick={this.addPlace}>Toevoegen</button>
+				<form onSubmit={this.addPlace}>
+					<Input name="name" type="text" ref="name" label="Naam" />
+					<SelectRegion name="region" options={this.regions} ref="region" />
+					<Toggle ref="visited" toggleVisited={this.toggleVisited} label="Bezocht" />
+					{this.state.visited ? (
+						<Rating ref="rating" />
+					) : null}
+					<button className="add-place__submit">Toevoegen</button>
+				</form>
 			</section>
 		);
 	}
