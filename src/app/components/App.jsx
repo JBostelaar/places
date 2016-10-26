@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from 'app/components/Header';
 
-export default function App({ children }) {
+export default function App({ children, location }) {
 	return (
 		<main>
-			<Header />
+			<Header path={location.pathname} />
 			{children}
 		</main>
 	);
@@ -12,4 +12,5 @@ export default function App({ children }) {
 
 App.propTypes = {
 	children: React.PropTypes.object,
+	location: React.PropTypes.object,
 };

@@ -14,13 +14,17 @@
 		margin: 0;
 	}
 
-	&__add {
-		text-decoration: none;
+	&__add, &__back {
 		position: absolute;
 		right: 20px;
 		top: 0;
-		font-size: 30px;
 		color: $c-primary;
+		line-height: 67px;
+	}
+
+	&__back {
+		right: auto;
+		left: 20px;
 	}
 
 	&__add-icon {
