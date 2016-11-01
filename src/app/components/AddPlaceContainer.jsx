@@ -30,24 +30,25 @@ export class AddPlaceContainer extends React.Component {
 
 	addPlace(e) {
 		e.preventDefault();
-		const region = regions.find(reg => reg.name === this.refs.region.state.value);
 
 		const place = {
 			name: this.refs.name.state.value,
-			region,
+			region: regions.find(reg => reg.name === this.refs.region.state.value),
 			rating: this.refs.rating ? this.refs.rating.state.value : 0,
 			visited: this.refs.visited.state.value,
 		};
 
+		// Add to Firebase
 		const newPlaceKey = firebase.database().ref().child('places').push().key;
 		const updates = {};
 		updates[`/places/${newPlaceKey}`] = place;
 		updates[`/user-places/${this.props.user.id}/${newPlaceKey}`] = place;
 
-		firebase.database().ref().update(updates);
-
-		this.props.addPlace(place);
-		this.context.router.push('/');
+		firebase.database().ref().update(updates).then(() => {
+			place.id = newPlaceKey;
+			this.props.addPlace(place);
+			this.context.router.push('/');
+		});
 	}
 
 	render() {
