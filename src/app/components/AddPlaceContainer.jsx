@@ -45,8 +45,12 @@ export class AddPlaceContainer extends React.Component {
 		updates[`/user-places/${this.props.user.id}/${newPlaceKey}`] = place;
 
 		firebase.database().ref().update(updates).then(() => {
-			place.id = newPlaceKey;
-			this.props.addPlace(place);
+			const data = {
+				places: {},
+			};
+
+			data.places[newPlaceKey] = place;
+			this.props.addPlace(data);
 			this.context.router.push('/');
 		});
 	}
