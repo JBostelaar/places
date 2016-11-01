@@ -5,6 +5,8 @@ import SelectRegion from 'app/components/SelectRegion';
 import Toggle from 'app/components/Toggle';
 import { connect } from 'react-redux';
 import { addPlace } from 'app/actions/places';
+import * as firebase from 'firebase';
+import regions from 'app/utils/regions';
 
 export class AddPlaceContainer extends React.Component {
 	static contextTypes = {
@@ -16,27 +18,7 @@ export class AddPlaceContainer extends React.Component {
 
 		this.state = {
 			visited: false,
-		}
-
-		this.regions = [
-			{
-				name: 'centrum',
-				label: 'Centrum',
-			},
-			{
-				name: 'oost',
-				label: 'Oost',
-			},
-			{
-				name: 'zuid',
-				label: 'Zuid',
-			},
-			{
-				name: 'west',
-				label: 'West',
-			},
-		];
-
+		};
 
 		this.addPlace = this.addPlace.bind(this);
 		this.toggleVisited = this.toggleVisited.bind(this);
@@ -48,7 +30,7 @@ export class AddPlaceContainer extends React.Component {
 
 	addPlace(e) {
 		e.preventDefault();
-		const region = this.regions.find(reg => reg.name === this.refs.region.state.value);
+		const region = regions.find(reg => reg.name === this.refs.region.state.value);
 
 		const place = {
 			name: this.refs.name.state.value,
@@ -56,6 +38,13 @@ export class AddPlaceContainer extends React.Component {
 			rating: this.refs.rating ? this.refs.rating.state.value : 0,
 			visited: this.refs.visited.state.value,
 		};
+
+		const newPlaceKey = firebase.database().ref().child('places').push().key;
+		const updates = {};
+		updates[`/places/${newPlaceKey}`] = place;
+		updates[`/user-places/${this.props.user.id}/${newPlaceKey}`] = place;
+
+		firebase.database().ref().update(updates);
 
 		this.props.addPlace(place);
 		this.context.router.push('/');
@@ -66,7 +55,7 @@ export class AddPlaceContainer extends React.Component {
 			<section className="add-place">
 				<form onSubmit={this.addPlace}>
 					<Input name="name" type="text" ref="name" label="Naam" />
-					<SelectRegion name="region" options={this.regions} ref="region" />
+					<SelectRegion name="region" options={regions} ref="region" />
 					<Toggle ref="visited" toggleVisited={this.toggleVisited} label="Bezocht" />
 					{this.state.visited ? (
 						<Rating ref="rating" />
@@ -78,4 +67,11 @@ export class AddPlaceContainer extends React.Component {
 	}
 }
 
-export default connect(null, { addPlace })(AddPlaceContainer);
+export default connect(state => ({
+	user: state.user,
+}), { addPlace })(AddPlaceContainer);
+
+AddPlaceContainer.propTypes = {
+	addPlace: React.PropTypes.func,
+	user: React.PropTypes.object,
+};
