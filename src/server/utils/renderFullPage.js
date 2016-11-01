@@ -8,6 +8,7 @@ export default function renderFullPage(html) {
 			<meta charset="utf-8">
 			<title>App</title>
 			<link href="https://fonts.googleapis.com/css?family=Montserrat|Source+Sans+Pro" rel="stylesheet">
+			<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
 			<link rel="stylesheet" href="/css/style.css?v=${pkg.version}">
 
 			<meta name="apple-mobile-web-app-capable" content="yes">
