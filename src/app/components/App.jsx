@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from 'app/components/Header';
-import initFirebase from 'app/utils/firebase';
+import firebaseConfig from 'app/utils/firebaseConfig';
 import * as firebase from 'firebase';
 import { updateUser } from 'app/actions/user';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
-initFirebase();
+firebase.initializeApp(firebaseConfig);
 
 export class App extends React.Component {
 	constructor() {
@@ -52,4 +52,5 @@ App.propTypes = {
 	children: React.PropTypes.object,
 	location: React.PropTypes.object,
 	updateUser: React.PropTypes.func,
+	user: React.PropTypes.object,
 };
