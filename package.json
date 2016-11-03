@@ -8,6 +8,7 @@
     "classnames": "^2.2.5",
     "express": "^4.13.4",
     "firebase": "^3.5.3",
+    "firebase-saga": "^1.1.1",
     "history": "^2.1.1",
     "normalize.css": "^3.0.3",
     "react": "^15.0.1",

@@ -1,9 +1,8 @@
 import React from 'react';
 import PlaceSummary from 'app/components/PlaceSummary';
 import OverviewFilter from 'app/components/OverviewFilter';
-import { addPlace } from 'app/actions/places';
+import { fetchPlaces } from 'app/actions/places';
 import { connect } from 'react-redux';
-import * as firebase from 'firebase';
 
 export class OverviewContainer extends React.Component {
 	constructor() {
@@ -16,14 +15,9 @@ export class OverviewContainer extends React.Component {
 		this.changeList = this.changeList.bind(this);
 	}
 
-	// componentWillMount() {
-	// 	firebase.database().ref(`/user-places/${this.props.user.uid}`)
-	// 	.once('value').then(snapshot => {
-	// 		const places = snapshot.val();
-	//
-	// 		this.props.addPlace({ places });
-	// 	});
-	// }
+	componentDidMount() {
+		this.props.fetchPlaces(this.props.user.uid);
+	}
 
 	changeList(activeList) {
 		this.setState({ activeList });
@@ -32,7 +26,7 @@ export class OverviewContainer extends React.Component {
 	render() {
 		const { places } = this.props;
 
-		if (!places.places) return;
+		if (!places.places) return null;
 		let array = Object.keys(places.places).map((p) => places.places[p]);
 
 		if (this.state.activeList === 'togo') {
@@ -57,4 +51,4 @@ export class OverviewContainer extends React.Component {
 export default connect(state => ({
 	places: state.places,
 	user: state.auth.user,
-}), { addPlace })(OverviewContainer);
+}), { fetchPlaces })(OverviewContainer);

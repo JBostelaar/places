@@ -1,16 +1,23 @@
 import * as c from 'app/constants';
 
 export const initialState = {
-	places: {},
+	places: null,
 };
 
 export default function placesReducer(state = initialState, action) {
-	if (action.type === c.ADD_PLACE) {
+	if (action.type === c.FETCH_PLACES_SUCCESS) {
+		const places = {
+			...action.payload,
+		};
+		return { places };
+	}
+
+	if (action.type === c.ADD_PLACE_SUCCESS) {
+		console.log(action);
 		const places = {
 			...state.places,
-			...action.payload.places,
+			action.payload
 		};
-
 		return { places };
 	}
 

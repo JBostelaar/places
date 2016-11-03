@@ -5,14 +5,9 @@ import SelectRegion from 'app/components/SelectRegion';
 import Toggle from 'app/components/Toggle';
 import { connect } from 'react-redux';
 import { addPlace } from 'app/actions/places';
-import * as firebase from 'firebase';
 import regions from 'app/utils/regions';
 
 export class AddPlaceContainer extends React.Component {
-	static contextTypes = {
-		router: React.PropTypes.object.isRequired,
-	};
-
 	constructor() {
 		super();
 
@@ -38,21 +33,7 @@ export class AddPlaceContainer extends React.Component {
 			visited: this.refs.visited.state.value,
 		};
 
-		// Add to Firebase
-		const newPlaceKey = firebase.database().ref().child('places').push().key;
-		const updates = {};
-		updates[`/places/${newPlaceKey}`] = place;
-		updates[`/user-places/${this.props.user.id}/${newPlaceKey}`] = place;
-
-		firebase.database().ref().update(updates).then(() => {
-			const data = {
-				places: {},
-			};
-
-			data.places[newPlaceKey] = place;
-			this.props.addPlace(data);
-			this.context.router.push('/');
-		});
+		this.props.addPlace(place, this.props.uid);
 	}
 
 	render() {
@@ -73,10 +54,10 @@ export class AddPlaceContainer extends React.Component {
 }
 
 export default connect(state => ({
-	user: state.user,
+	uid: state.auth.uid,
 }), { addPlace })(AddPlaceContainer);
 
 AddPlaceContainer.propTypes = {
 	addPlace: React.PropTypes.func,
-	user: React.PropTypes.object,
+	uid: React.PropTypes.string,
 };
