@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export default function OverviewFilter({ changeList, activeList }) {
+const OverviewFilter = ({ changeList, activeList }) => {
 	return (
 		<section className="overview-filter">
 			<a
@@ -19,3 +19,5 @@ export default function OverviewFilter({ changeList, activeList }) {
 		</section>
 	);
 }
+
+export default OverviewFilter;

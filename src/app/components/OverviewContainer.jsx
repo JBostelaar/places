@@ -1,6 +1,7 @@
 import React from 'react';
 import PlaceSummary from 'app/components/PlaceSummary';
 import OverviewFilter from 'app/components/OverviewFilter';
+import Loader from 'app/components/Loader';
 import { fetchPlaces } from 'app/actions/places';
 import { connect } from 'react-redux';
 
@@ -25,17 +26,18 @@ export class OverviewContainer extends React.Component {
 
 	render() {
 		const { places } = this.props;
+		const { activeList } = this.state;
 
-		if (!places.places) return null;
-		let array = Object.keys(places.places).map((p) => places.places[p]);
+		if (!places) return <Loader />;
+		let array = Object.keys(places).map((p) => places[p]);
 
-		if (this.state.activeList === 'togo') {
+		if (activeList === 'togo') {
 			array = array.filter(place => !place.visited);
 		}
 
 		return (
 			<div className="overview">
-				<OverviewFilter changeList={this.changeList} activeList={this.state.activeList} />
+				<OverviewFilter changeList={this.changeList} activeList={activeList} />
 				<section className="places">
 					{array.length ? array.map(place => (
 						<PlaceSummary place={place} key={place.name} />
@@ -49,6 +51,6 @@ export class OverviewContainer extends React.Component {
 }
 
 export default connect(state => ({
-	places: state.places,
+	places: state.places.places,
 	user: state.auth.user,
 }), { fetchPlaces })(OverviewContainer);
