@@ -16,14 +16,14 @@ export class OverviewContainer extends React.Component {
 		this.changeList = this.changeList.bind(this);
 	}
 
-	componentWillMount() {
-		firebase.database().ref(`/user-places/${this.props.user.id}`)
-		.once('value').then(snapshot => {
-			const places = snapshot.val();
-
-			this.props.addPlace({ places });
-		});
-	}
+	// componentWillMount() {
+	// 	firebase.database().ref(`/user-places/${this.props.user.uid}`)
+	// 	.once('value').then(snapshot => {
+	// 		const places = snapshot.val();
+	//
+	// 		this.props.addPlace({ places });
+	// 	});
+	// }
 
 	changeList(activeList) {
 		this.setState({ activeList });
@@ -56,5 +56,5 @@ export class OverviewContainer extends React.Component {
 
 export default connect(state => ({
 	places: state.places,
-	user: state.user,
+	user: state.auth.user,
 }), { addPlace })(OverviewContainer);

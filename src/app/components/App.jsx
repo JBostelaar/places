@@ -1,43 +1,22 @@
 import React from 'react';
 import Header from 'app/components/Header';
-import firebaseConfig from 'app/utils/firebaseConfig';
-import * as firebase from 'firebase';
-import { updateUser } from 'app/actions/user';
+import { signOut } from 'app/actions/auth';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
-firebase.initializeApp(firebaseConfig);
-
 export class App extends React.Component {
-	constructor() {
-		super();
-
-		this.logOut = this.logOut.bind(this);
-	}
-
-	componentWillMount() {
-		firebase.auth().onAuthStateChanged(user => {
-			if (user) {
-				this.props.updateUser(user);
-			} else {
-				browserHistory.push('/login');
-			}
-		});
-	}
-
-	logOut() {
-		firebase.auth().signOut();
-		this.props.updateUser({ logged_in: false });
+	componentDidMount() {
+		if (!this.props.isAuthenticated) {
+			browserHistory.push('/login');
+		}
 	}
 
 	render() {
-		const { children, location, user } = this.props;
-
-		if (!user.logged_in) return null;
+		const { children, location } = this.props;
 
 		return (
 			<main>
-				<Header path={location.pathname} logOut={this.logOut} />
+				<Header path={location.pathname} logOut={this.props.signOut} />
 				{children}
 			</main>
 		);
@@ -45,12 +24,14 @@ export class App extends React.Component {
 }
 
 export default connect(state => ({
-	user: state.user,
-}), { updateUser })(App);
+	user: state.auth.user,
+	isAuthenticated: state.auth.authenticated,
+}), { signOut })(App);
 
 App.propTypes = {
 	children: React.PropTypes.object,
 	location: React.PropTypes.object,
-	updateUser: React.PropTypes.func,
+	signOut: React.PropTypes.func,
 	user: React.PropTypes.object,
+	isAuthenticated: React.PropTypes.bool,
 };

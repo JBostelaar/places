@@ -1,8 +1,7 @@
 import React from 'react';
-import * as firebase from 'firebase';
 import { connect } from 'react-redux';
-import { updateUser } from 'app/actions/user';
-import { browserHistory } from 'react-router';
+import { signIn } from 'app/actions/auth';
+import * as firebase from 'firebase';
 
 export class Login extends React.Component {
 	constructor() {
@@ -13,14 +12,7 @@ export class Login extends React.Component {
 
 	login() {
 		const provider = new firebase.auth.GoogleAuthProvider();
-		provider.addScope('https://www.googleapis.com/auth/plus.login');
-
-		firebase.auth().signInWithPopup(provider).then(result => {
-			this.props.updateUser(result.user);
-			browserHistory.push('/');
-		}).catch(error => {
-			console.log('User error!', error);
-		});
+		this.props.signIn(provider);
 	}
 
 	render() {
@@ -35,4 +27,4 @@ export class Login extends React.Component {
 	}
 }
 
-export default connect(null, { updateUser })(Login);
+export default connect(null, { signIn })(Login);
