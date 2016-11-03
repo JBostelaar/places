@@ -13,10 +13,9 @@ export default function placesReducer(state = initialState, action) {
 	}
 
 	if (action.type === c.ADD_PLACE_SUCCESS) {
-		console.log(action);
 		const places = {
 			...state.places,
-			action.payload
+			...action.payload,
 		};
 		return { places };
 	}
