@@ -7,7 +7,6 @@ export default class Input extends React.Component {
 
 		this.state = {
 			value: null,
-			options: [],
 		};
 		this.onClick = this.onClick.bind(this);
 	}

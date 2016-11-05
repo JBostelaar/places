@@ -7,7 +7,7 @@ export default function Header({ path, logOut }) {
 			{path !== '/' ? (
 				<Link to="/" className="header__back"><img src="/img/l-arrow.svg" role="button" alt="add" /></Link>
 			) : (
-				<a onClick={logOut} className="header__back">Logout</a>
+				<a onClick={logOut} className="header__profile"><img src="/img/profile.svg" role="button" alt="add" /></a>
 			)}
 			<h1 className="header__title">Places</h1>
 			<Link to="/add" className="header__add"><img src="/img/add.svg" role="button" alt="add" /></Link>

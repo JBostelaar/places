@@ -14,18 +14,23 @@
 		margin: 0;
 	}
 
-	&__add, &__back {
+	&__add, &__back, &__profile {
 		position: absolute;
-		right: 20px;
+		left: 20px;
 		top: 0;
 		color: $c-primary;
 		line-height: 67px;
 	}
 
-	&__back {
-		right: auto;
-		left: 20px;
+	&__add {
+		right: 20px;
+		left: auto;
 	}
+
+  &__profile img {
+    width: 18px;
+    height: 18px;
+  }
 
 	&__add-icon {
 		font-style: normal;
