@@ -6,9 +6,14 @@ export const initialState = {
 
 export default function placesReducer(state = initialState, action) {
 	if (action.type === c.FETCH_PLACES_SUCCESS) {
+		Object.keys(action.payload).map(id => (
+			action.payload[id].id = id
+		));
+
 		const places = {
 			...action.payload,
 		};
+
 		return { places };
 	}
 

@@ -29,7 +29,7 @@ export class OverviewContainer extends React.Component {
 		const { activeList } = this.state;
 
 		if (!places) return <Loader />;
-		let array = Object.keys(places).map((p) => places[p]);
+		let array = Object.keys(places).map(p => places[p]);
 
 		if (activeList === 'togo') {
 			array = array.filter(place => !place.visited);
@@ -49,6 +49,12 @@ export class OverviewContainer extends React.Component {
 		);
 	}
 }
+
+OverviewContainer.propTypes = {
+	places: React.PropTypes.object,
+	user: React.PropTypes.object,
+	fetchPlaces: React.PropTypes.func,
+};
 
 export default connect(state => ({
 	places: state.places.places,

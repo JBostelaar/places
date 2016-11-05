@@ -9,14 +9,16 @@ import 'babel-polyfill';
 function* addPlace({ place, uid }) {
 	try {
 		const newPlaceKey = firebaseDb.ref().child('places').push().key;
-		const newPlace = { [newPlaceKey]: place };
 		const updates = {
 			[`/places/${newPlaceKey}`]: place,
 			[`/user-places/${uid}/${newPlaceKey}`]: place,
 		};
-
 		yield firebaseDb.ref().update(updates);
+
+		const newPlace = { [newPlaceKey]: place };
+		newPlace[newPlaceKey].id = newPlaceKey;
 		yield put(addPlaceSuccess(newPlace));
+
 		yield history.push('/');
 	} catch (error) {
 		yield put(addPlaceFailed(error));

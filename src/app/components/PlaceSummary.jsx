@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 export default function PlaceSummary({ place }) {
 	return (
 		<article className="place">
-			<Link to={`places/${place.name}`}>
+			<Link to={`places/${place.id}`}>
 				<div className="place__category">
 					<img src="/img/food.svg" />
 				</div>
@@ -24,3 +24,7 @@ export default function PlaceSummary({ place }) {
 		</article>
 	);
 }
+
+PlaceSummary.propTypes = {
+	place: React.PropTypes.object,
+};
