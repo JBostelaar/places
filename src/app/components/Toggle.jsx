@@ -31,3 +31,8 @@ export default class Toggle extends React.Component {
 		);
 	}
 }
+
+Toggle.propTypes = {
+	label: React.PropTypes.string,
+	toggleVisited: React.PropTypes.func,
+};

@@ -28,3 +28,7 @@ export class Login extends React.Component {
 }
 
 export default connect(null, { signIn })(Login);
+
+Login.propTypes = {
+	signIn: React.PropTypes.func,
+};

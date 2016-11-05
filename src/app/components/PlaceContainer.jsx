@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 export class PlaceContainer extends React.Component {
 	render() {
-		const place = this.props.places.places.find(place => place.name === this.props.routeParams.name);
+		const place = this.props.places.places[this.props.routeParams.id];
 		return (
 			<article>
 				<h3>{place.name}</h3>
@@ -13,6 +13,11 @@ export class PlaceContainer extends React.Component {
 		);
 	}
 }
+
+PlaceContainer.propTypes = {
+	places: React.PropTypes.object,
+	routeParams: React.PropTypes.object.isRequired,
+};
 
 export default connect(state => ({
 	places: state.places,

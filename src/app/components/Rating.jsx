@@ -17,7 +17,7 @@ export default class Rating extends React.Component {
 		for (let i = 0; i < 5; i++) {
 			ratings.push(
 				<img
-					key={i} src={`/img/${(i + 1) <= this.state.value ? '': 'd-'}fire.svg`}
+					key={i} src={`/img/${(i + 1) <= this.state.value ? '' : 'd-'}fire.svg`}
 					onClick={() => this.handleChange(i + 1)}
 				/>
 			);

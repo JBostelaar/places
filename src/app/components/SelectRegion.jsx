@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export default class Input extends React.Component {
+export default class SelectRegion extends React.Component {
 	constructor() {
 		super();
 
@@ -25,7 +25,7 @@ export default class Input extends React.Component {
 					{options.map(option => (
 						<a
 							data-value={option.name} key={option.name}
-							className={classNames({active: option.name === this.state.value})}
+							className={classNames({ active: option.name === this.state.value })}
 							onClick={this.onClick}
 						>
 							{option.label}
@@ -37,7 +37,7 @@ export default class Input extends React.Component {
 	}
 }
 
-Input.propTypes = {
+SelectRegion.propTypes = {
 	name: React.PropTypes.string,
 	options: React.PropTypes.array,
 };
