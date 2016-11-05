@@ -17,7 +17,7 @@ export default function getRoutes() {
 				},
 				{
 					component: PlaceContainer,
-					path: '/places/:name',
+					path: '/places/:id',
 				},
 			],
 		},
