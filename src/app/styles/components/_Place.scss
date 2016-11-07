@@ -1,0 +1,29 @@
+.place {
+	&__header {
+		display: flex;
+		padding: 20px;
+	}
+
+	&__icon {
+		width: 22px;
+		height: 43px;
+		margin-right: 20px;
+	}
+
+	&__title {
+		font-size: 25px;
+		margin: 0;
+	}
+
+	&__region {
+		margin: 0;
+	}
+
+	&__body {
+		padding: 0 20px;
+
+		p {
+			font-size: 18px;
+		}
+	}
+}
