@@ -5,10 +5,7 @@ export function initAuth(dispatch) {
 	return new Promise((resolve, reject) => {
 		const unsubscribe = firebaseAuth.onAuthStateChanged(
 			authUser => {
-				if (authUser) {
-					dispatch(signInSuccess(authUser));
-				}
-
+				if (authUser) dispatch(signInSuccess(authUser));
 				resolve();
 				unsubscribe();
 			},

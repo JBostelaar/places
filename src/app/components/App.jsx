@@ -2,36 +2,18 @@ import React from 'react';
 import Header from 'app/components/Header';
 import { signOut } from 'app/actions/auth';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
 
-export class App extends React.Component {
-	componentDidMount() {
-		if (!this.props.isAuthenticated) {
-			browserHistory.push('/login');
-		}
-	}
-
-	render() {
-		const { children, location } = this.props;
-
-		return (
-			<main>
-				<Header path={location.pathname} logOut={this.props.signOut} />
-				{children}
-			</main>
-		);
-	}
-}
+const App = ({ children, location, ...props }) => (
+	<main>
+		<Header path={location.pathname} logOut={props.signOut} />
+		{children}
+	</main>
+);
 
 App.propTypes = {
-	children: React.PropTypes.object,
-	location: React.PropTypes.object,
+	children: React.PropTypes.object.isRequired,
+	location: React.PropTypes.object.isRequired,
 	signOut: React.PropTypes.func,
-	user: React.PropTypes.object,
-	isAuthenticated: React.PropTypes.bool,
 };
 
-export default connect(state => ({
-	user: state.auth.user,
-	isAuthenticated: state.auth.authenticated,
-}), { signOut })(App);
+export default connect(null, { signOut })(App);

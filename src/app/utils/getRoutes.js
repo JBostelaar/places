@@ -4,11 +4,18 @@ import AddPlaceContainer from 'app/components/AddPlaceContainer';
 import PlaceContainer from 'app/components/PlaceContainer';
 import Login from 'app/components/Login';
 
-export default function getRoutes() {
-	return [
+const requireAuth = (store) => (nextState, transtition) => {
+	if (store && !store.getState().auth.authenticated) {
+		transtition('/login');
+	}
+};
+
+const getRoutes = (store) => (
+	[
 		{
 			component: App,
 			path: '/',
+			onEnter: requireAuth(store),
 			indexRoute: { component: OverviewContainer },
 			childRoutes: [
 				{
@@ -25,5 +32,7 @@ export default function getRoutes() {
 			component: Login,
 			path: '/login',
 		},
-	];
-}
+	]
+);
+
+export default getRoutes;

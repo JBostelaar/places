@@ -8,18 +8,14 @@ import { initAuth } from 'app/utils/initAuth';
 import { syncHistoryWithStore } from 'react-router-redux';
 import 'react-fastclick';
 
-window.store = store;
-
 const history = syncHistoryWithStore(browserHistory, store);
 
 function render() {
 	ReactDOM.render((
 		<Provider store={store}>
-			<Router children={getRoutes()} history={history} />
+			<Router children={getRoutes(store)} history={history} />
 		</Provider>
 	), document.getElementById('app'));
 }
 
-initAuth(store.dispatch).then(() => {
-	render();
-});
+initAuth(store.dispatch).then(() => render());
