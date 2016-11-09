@@ -23,11 +23,6 @@ export class App extends React.Component {
 	}
 }
 
-export default connect(state => ({
-	user: state.auth.user,
-	isAuthenticated: state.auth.authenticated,
-}), { signOut })(App);
-
 App.propTypes = {
 	children: React.PropTypes.object,
 	location: React.PropTypes.object,
@@ -35,3 +30,8 @@ App.propTypes = {
 	user: React.PropTypes.object,
 	isAuthenticated: React.PropTypes.bool,
 };
+
+export default connect(state => ({
+	user: state.auth.user,
+	isAuthenticated: state.auth.authenticated,
+}), { signOut })(App);
