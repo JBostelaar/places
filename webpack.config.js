@@ -37,11 +37,11 @@ module.exports = {
 			loaders: [
 				'babel',
 			],
-		})
+		}),
 	],
 	resolve: {
 		extensions: ['', '.js', '.jsx'],
-		root: [path.resolve('./src/app')],
+		root: [path.resolve('./src')],
 	},
 	devtool: 'eval',
 };

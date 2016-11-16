@@ -1,5 +1,5 @@
-import store from 'store';
-import getRoutes from 'utils/getRoutes';
+import store from 'app/store';
+import getRoutes from 'app/utils/getRoutes';
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';

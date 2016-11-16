@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Icon from 'components/Icon';
-import fireIcon from 'images/fire.svg';
-import foodIcon from 'images/food.svg';
+import Icon from 'app/components/Icon';
+import fireIcon from 'app/images/fire.svg';
+import foodIcon from 'app/images/food.svg';
 
 const PlaceSummary = ({ place }) => (
 	<article className="place-summary">

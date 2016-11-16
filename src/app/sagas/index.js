@@ -1,5 +1,5 @@
-import { authSagas } from './auth';
-import { placesSagas } from './places';
+import { authSagas } from 'app/sagas/auth';
+import { placesSagas } from 'app/sagas/places';
 
 export default function* sagas() {
 	yield [

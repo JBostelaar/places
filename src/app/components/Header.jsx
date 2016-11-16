@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Icon from 'components/Icon';
+import Icon from 'app/components/Icon';
 
-import arrowIcon from 'images/l-arrow.svg';
-import addIcon from 'images/add.svg';
-import profileIcon from 'images/profile.svg';
+import arrowIcon from 'app/images/l-arrow.svg';
+import addIcon from 'app/images/add.svg';
+import profileIcon from 'app/images/profile.svg';
 
 const Header = ({ path }) => (
 	<header className="header">

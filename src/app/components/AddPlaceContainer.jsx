@@ -1,11 +1,11 @@
 import React from 'react';
-import Input from './Input';
-import Rating from './Rating';
-import SelectRegion from './SelectRegion';
-import Toggle from './Toggle';
+import Input from 'app/components/Input';
+import Rating from 'app/components/Rating';
+import SelectRegion from 'app/components/SelectRegion';
+import Toggle from 'app/components/Toggle';
 import { connect } from 'react-redux';
-import { addPlace } from '../actions/places';
-import regions from '../utils/regions';
+import { addPlace } from 'app/actions/places';
+import regions from 'app/utils/regions';
 
 export class AddPlaceContainer extends React.Component {
 	constructor() {

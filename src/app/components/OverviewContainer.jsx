@@ -1,8 +1,8 @@
 import React from 'react';
-import PlaceSummary from './PlaceSummary';
-import OverviewFilter from './OverviewFilter';
-import Loader from './Loader';
-import { fetchPlaces } from '../actions/places';
+import PlaceSummary from 'app/components/PlaceSummary';
+import OverviewFilter from 'app/components/OverviewFilter';
+import Loader from 'app/components/Loader';
+import { fetchPlaces } from 'app/actions/places';
 import { connect } from 'react-redux';
 
 export class OverviewContainer extends React.Component {

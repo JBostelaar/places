@@ -1,9 +1,9 @@
-import * as c from '../constants';
+import * as c from 'app/constants';
 import { browserHistory as history } from 'react-router';
 import { fork, put, take } from 'redux-saga/effects';
-import { firebaseDb } from '../utils/firebase';
+import { firebaseDb } from 'app/utils/firebase';
 import { addPlaceSuccess, addPlaceFailed,
-	fetchPlacesSuccess, fetchPlacesFailed } from '../actions/places';
+	fetchPlacesSuccess, fetchPlacesFailed } from 'app/actions/places';
 import 'babel-polyfill';
 
 function* addPlace({ place, uid }) {

@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import firebaseConfig from './firebaseConfig';
+import firebaseConfig from 'app/utils/firebaseConfig';
 
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
 export const firebaseAuth = firebaseApp.auth();

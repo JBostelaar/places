@@ -1,8 +1,8 @@
 import React from 'react';
-import Loader from './Loader';
-import Rating from './Rating';
+import Loader from 'app/components/Loader';
+import Rating from 'app/components/Rating';
 import { connect } from 'react-redux';
-import { fetchPlaces } from '../actions/places';
+import { fetchPlaces } from 'app/actions/places';
 
 export class PlaceContainer extends React.Component {
 	componentDidMount() {

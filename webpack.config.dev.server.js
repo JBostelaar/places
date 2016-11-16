@@ -23,7 +23,7 @@ module.exports = {
 	resolve: {
 		extensions: ['', '.js', '.jsx'],
 		root: [
-			path.resolve('./src/app'),
+			path.resolve('./src'),
 		],
 	},
 	devtool: 'eval',
