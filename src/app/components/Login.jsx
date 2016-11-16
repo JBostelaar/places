@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signIn } from 'app/actions/auth';
+import { signIn } from '../actions/auth';
 import * as firebase from 'firebase';
 
 const Login = (props) => {

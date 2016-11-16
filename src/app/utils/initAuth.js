@@ -1,5 +1,5 @@
-import { firebaseAuth } from 'app/utils/firebase';
-import { signInSuccess } from 'app/actions/auth';
+import { firebaseAuth } from './firebase';
+import { signInSuccess } from '../actions/auth';
 
 export function initAuth(dispatch) {
 	return new Promise((resolve, reject) => {

@@ -1,8 +1,8 @@
-import * as c from 'app/constants';
+import * as c from '../constants';
 import { browserHistory as history } from 'react-router';
 import { call, fork, put, take } from 'redux-saga/effects';
-import { firebaseAuth } from 'app/utils/firebase';
-import { signInSuccess, signInFailed, signOutSuccess, signOutFailed } from 'app/actions/auth';
+import { firebaseAuth } from '../utils/firebase';
+import { signInSuccess, signInFailed, signOutSuccess, signOutFailed } from '../actions/auth';
 import 'babel-polyfill';
 
 function* signIn(authProvider) {

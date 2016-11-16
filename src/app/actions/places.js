@@ -1,4 +1,4 @@
-import * as c from 'app/constants';
+import * as c from '../constants';
 
 export function fetchPlaces(uid) {
 	return { type: c.FETCH_PLACES, payload: uid };

@@ -1,4 +1,4 @@
-import * as c from 'app/constants';
+import * as c from '../constants';
 
 export const initialState = {
 	authenticated: false,

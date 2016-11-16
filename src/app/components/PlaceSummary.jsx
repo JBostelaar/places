@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Icon from 'components/Icon';
+import fireIcon from 'images/fire.svg';
+import foodIcon from 'images/food.svg';
 
 const PlaceSummary = ({ place }) => (
 	<article className="place-summary">
 		<Link to={`places/${place.id}`}>
 			<div className="place-summary__category">
-				<img src="/img/food.svg" />
+				<Icon svg={foodIcon} />
 			</div>
 			<div className="place-summary__meta">
 				<h3 className="place-summary__title">{place.name}</h3>
@@ -13,7 +16,9 @@ const PlaceSummary = ({ place }) => (
 			</div>
 			<div className="place-summary__rating">
 				{place.visited ? (
-					<span className="place-summary__score">{place.rating} <img src="/img/fire.svg" /></span>
+					<span className="place-summary__score">{place.rating}
+						<Icon svg={fireIcon} />
+					</span>
 					) : (
 					<span className="place-summary__no-score"></span>
 				)}

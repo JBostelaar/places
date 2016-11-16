@@ -1,15 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Icon from 'components/Icon';
+
+import arrowIcon from 'images/l-arrow.svg';
+import addIcon from 'images/add.svg';
+import profileIcon from 'images/profile.svg';
 
 const Header = ({ path }) => (
 	<header className="header">
 		{path !== '/' ? (
-			<Link to="/" className="header__back"><img src="/img/l-arrow.svg" role="button" alt="add" /></Link>
+			<Link to="/" className="header__back">
+				<Icon svg={arrowIcon} />
+			</Link>
 			) : (
-			<Link to="/profile" className="header__profile"><img src="/img/profile.svg" role="button" alt="add" /></Link>
+			<Link to="/profile" className="header__profile">
+				<Icon svg={profileIcon} />
+			</Link>
 		)}
 		<h1 className="header__title">Places</h1>
-		<Link to="/add" className="header__add"><img src="/img/add.svg" role="button" alt="add" /></Link>
+		<Link to="/add" className="header__add">
+			<Icon svg={addIcon} />
+		</Link>
 	</header>
 );
 

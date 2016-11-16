@@ -1,8 +1,8 @@
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import * as appReducers from 'app/reducers';
+import * as appReducers from './reducers';
 import createSagaMiddleware from 'redux-saga';
-import sagas from 'app/sagas';
+import sagas from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 let middleware = applyMiddleware(sagaMiddleware);
