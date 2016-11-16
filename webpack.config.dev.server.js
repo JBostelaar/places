@@ -9,9 +9,9 @@ module.exports = {
 		'./src/server/index.js',
 	],
 	output: {
-		path: path.join('dist'),
+		path: path.resolve(__dirname, 'dist'),
 		filename: 'server.js',
-		publicPath: '/assets/',
+		publicPath: '/public/',
 	},
 	module: {
 		loaders: [
@@ -22,9 +22,7 @@ module.exports = {
 	},
 	resolve: {
 		extensions: ['', '.js', '.jsx'],
-		root: [
-			path.resolve('./src'),
-		],
+		root: [path.resolve('./src')],
 	},
 	devtool: 'eval',
 };

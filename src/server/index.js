@@ -1,11 +1,12 @@
 import store from 'app/store';
 import getRoutes from 'app/utils/getRoutes';
 import express from 'express';
+import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
-import renderFullPage from '../server/utils/renderFullPage';
+import renderFullPage from 'server/utils/renderFullPage';
 
 const app = express();
 
