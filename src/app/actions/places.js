@@ -23,3 +23,7 @@ export function addPlaceSuccess(place) {
 export function addPlaceFailed() {
 	return { type: c.ADD_PLACE_FAILED };
 }
+
+export function clearPlaces() {
+	return { type: c.CLEAR_PLACES };
+}

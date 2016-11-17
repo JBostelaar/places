@@ -10,6 +10,8 @@ export const FETCH_PLACES = 'places/fetch';
 export const FETCH_PLACES_SUCCESS = 'places/fetch.success';
 export const FETCH_PLACES_FAILED = 'places/fetch.failed';
 
+export const CLEAR_PLACES = 'places/clear';
+
 export const ADD_PLACE = 'places/add';
 export const ADD_PLACE_SUCCESS = 'places/add.success';
 export const ADD_PLACE_FAILED = 'places/add.failed';

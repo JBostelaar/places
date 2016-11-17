@@ -3,6 +3,7 @@ import { browserHistory as history } from 'react-router';
 import { call, fork, put, take } from 'redux-saga/effects';
 import { firebaseAuth } from 'app/utils/firebase';
 import { signInSuccess, signInFailed, signOutSuccess, signOutFailed } from 'app/actions/auth';
+import { clearPlaces } from 'app/actions/places';
 import 'babel-polyfill';
 
 function* signIn(authProvider) {
@@ -19,6 +20,7 @@ function* signOut() {
 	try {
 		yield call([firebaseAuth, firebaseAuth.signOut]);
 		yield put(signOutSuccess());
+		yield put(clearPlaces());
 		yield history.replace('/login');
 	} catch (error) {
 		yield put(signOutFailed(error));

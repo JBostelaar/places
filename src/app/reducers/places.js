@@ -25,5 +25,9 @@ export default function placesReducer(state = initialState, action) {
 		return { places };
 	}
 
+	if (action.type === c.CLEAR_PLACES) {
+		return initialState;
+	}
+
 	return state;
 }
