@@ -1,7 +1,7 @@
 import App from 'app/components/App';
-import OverviewContainer from 'app/components/OverviewContainer';
-import AddPlaceContainer from 'app/components/AddPlaceContainer';
-import PlaceContainer from 'app/components/PlaceContainer';
+import OverviewContainer from 'app/components/Places/OverviewContainer';
+import AddPlaceContainer from 'app/components/Places/AddPlaceContainer';
+import PlaceContainer from 'app/components/Places/PlaceContainer';
 import Login from 'app/components/Login';
 import Profile from 'app/components/Profile';
 

@@ -11,3 +11,4 @@ node_modules/
 *.happypack*
 ehthumbs.db
 Thumbs.db
+npm-debug.log

@@ -1,6 +1,6 @@
 import React from 'react';
-import Loader from 'app/components/Loader';
-import Rating from 'app/components/Rating';
+import Loader from 'app/components/elements/Loader';
+import Rating from 'app/components/elements/Rating';
 import { connect } from 'react-redux';
 import { fetchPlaces } from 'app/actions/places';
 

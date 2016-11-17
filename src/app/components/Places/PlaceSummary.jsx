@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Icon from 'app/components/Icon';
+import Icon from 'app/components/elements/Icon';
 import fireIcon from 'app/images/fire.svg';
 import foodIcon from 'app/images/food.svg';
 
@@ -16,8 +16,9 @@ const PlaceSummary = ({ place }) => (
 			</div>
 			<div className="place-summary__rating">
 				{place.visited ? (
-					<span className="place-summary__score">{place.rating}
-						<Icon svg={fireIcon} />
+					<span className="place-summary__score">
+						{place.rating}
+						<Icon svg={fireIcon} className="place-summary__icon" />
 					</span>
 					) : (
 					<span className="place-summary__no-score"></span>

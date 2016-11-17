@@ -1,4 +1,7 @@
 import React from 'react';
+import Icon from 'app/components/elements/Icon';
+import fireIcon from 'app/images/fire.svg';
+import dfireIcon from 'app/images/d-fire.svg';
 
 export default class Rating extends React.Component {
 	constructor(props) {
@@ -17,9 +20,10 @@ export default class Rating extends React.Component {
 		const ratings = [];
 		for (let i = 0; i < 5; i++) {
 			ratings.push(
-				<img
-					key={i} src={`/img/${(i + 1) <= this.state.value ? '' : 'd-'}fire.svg`}
+				<Icon
+					svg={(i + 1) <= this.state.value ? fireIcon : dfireIcon}
 					onClick={!fixed ? () => this.handleChange(i + 1) : null}
+					key={i}
 				/>
 			);
 		}

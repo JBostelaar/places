@@ -1,7 +1,7 @@
 import React from 'react';
-import PlaceSummary from 'app/components/PlaceSummary';
-import OverviewFilter from 'app/components/OverviewFilter';
-import Loader from 'app/components/Loader';
+import PlaceSummary from 'app/components/Places/PlaceSummary';
+import OverviewFilter from 'app/components/Places/OverviewFilter';
+import Loader from 'app/components/elements/Loader';
 import { fetchPlaces } from 'app/actions/places';
 import { connect } from 'react-redux';
 

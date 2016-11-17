@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Icon from 'app/components/Icon';
+import Icon from 'app/components/elements/Icon';
 
 import arrowIcon from 'app/images/l-arrow.svg';
 import addIcon from 'app/images/add.svg';
