@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Loader from 'app/components/elements/Loader';
 import Rating from 'app/components/elements/Rating';
-import { connect } from 'react-redux';
+import Icon from 'app/components/elements/Icon';
+import foodIcon from 'app/images/food.svg';
 import { fetchPlaces } from 'app/actions/places';
 
 export class PlaceContainer extends React.Component {
@@ -18,7 +20,7 @@ export class PlaceContainer extends React.Component {
 		return (
 			<article className="place">
 				<header className="place__header">
-					<img className="place__icon" src="/img/food.svg" />
+					<Icon svg={foodIcon} />
 					<div className="place__meta">
 						<h2 className="place__title">{place.name}</h2>
 						<p className="place__region">{place.region.label}</p>
