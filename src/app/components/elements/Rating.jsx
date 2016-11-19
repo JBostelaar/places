@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import Icon from 'app/components/elements/Icon';
 import fireIcon from 'app/images/fire.svg';
 import dfireIcon from 'app/images/d-fire.svg';
@@ -29,7 +30,11 @@ export default class Rating extends React.Component {
 		}
 
 		return (
-			<div className="rating-field">
+			<div
+				className={classNames('rating-field', {
+					'rating-field--fixed': fixed,
+				})}
+			>
 				{!fixed ? (
 					<label>Geef een beoordeling</label>
 				) : null}

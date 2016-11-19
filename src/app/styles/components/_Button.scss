@@ -1,0 +1,40 @@
+.btn {
+	background: $c-primary;
+	border: none;
+	border-radius: 4px;
+	padding: 10px 20px;
+	color: #fff;
+	position: relative;
+	outline: none;
+
+	&--inverted {
+		background: none;
+		color: $c-primary;
+		border: 2px solid $c-primary;
+
+		&:active {
+			background: rgba($c-primary, .1);
+		}
+	}
+
+	&--delete {
+		color: $c-red;
+		background: none;
+		border: 2px solid $c-red;
+
+		&:active {
+			background: rgba($c-red, .1);
+		}
+	}
+
+	&--icon {
+		padding: 10px 20px 10px 40px;
+
+		.icon {
+			position: absolute;
+			left: 20px;
+			top: 10px;
+			width: 12px;
+		}
+	}
+}

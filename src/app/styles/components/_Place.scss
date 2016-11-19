@@ -1,7 +1,9 @@
 .place {
+	padding: 20px;
+
 	&__header {
 		display: flex;
-		padding: 20px;
+		margin-bottom: 20px;
 	}
 
 	&__icon {
@@ -10,20 +12,32 @@
 		margin-right: 20px;
 	}
 
+	.rating-field {
+		float: left;
+		margin-left: 5px;
+	}
+
 	&__title {
 		font-size: 25px;
-		margin: 0;
+		margin: 0 0 3px;
 	}
 
 	&__region {
 		margin: 0;
+		float: left;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 14px;
+		color: #737373;
+		line-height: 20px;
 	}
 
 	&__body {
-		padding: 0 20px;
+		margin-bottom: 20px;
 
 		p {
 			font-size: 18px;
+			margin: 0;
 		}
 	}
 }
