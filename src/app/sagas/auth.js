@@ -1,14 +1,15 @@
 import * as c from 'app/constants';
 import { browserHistory as history } from 'react-router';
-import { call, fork, put, take } from 'redux-saga/effects';
+import { takeEvery } from 'redux-saga';
+import { call, fork, put } from 'redux-saga/effects';
 import { firebaseAuth } from 'app/utils/firebase';
 import { signInSuccess, signInFailed, signOutSuccess, signOutFailed } from 'app/actions/auth';
 import { clearPlaces } from 'app/actions/places';
 import 'babel-polyfill';
 
-function* signIn(authProvider) {
+function* signIn(action) {
 	try {
-		const authData = yield call([firebaseAuth, firebaseAuth.signInWithPopup], authProvider);
+		const authData = yield call([firebaseAuth, firebaseAuth.signInWithPopup], action.payload);
 		yield put(signInSuccess(authData.user));
 		yield history.push('/');
 	} catch (error) {
@@ -29,17 +30,11 @@ function* signOut() {
 
 // WATCHERS
 function* watchSignIn() {
-	while (true) {
-		const { payload } = yield take(c.AUTH_SIGNIN);
-		yield fork(signIn, payload.authProvider);
-	}
+	yield* takeEvery(c.AUTH_SIGNIN, signIn);
 }
 
 function* watchSignOut() {
-	while (true) {
-		yield take(c.AUTH_SIGNOUT);
-		yield fork(signOut);
-	}
+	yield* takeEvery(c.AUTH_SIGNOUT, signOut);
 }
 
 // AUTH SAGAS

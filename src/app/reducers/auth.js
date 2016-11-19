@@ -19,12 +19,7 @@ export default function authReducer(state = initialState, action) {
 	}
 
 	if (action.type === c.AUTH_SIGNOUT_SUCCESS) {
-		return {
-			...state,
-			authenticated: false,
-			uid: null,
-			user: null,
-		};
+		return initialState;
 	}
 
 	return state;

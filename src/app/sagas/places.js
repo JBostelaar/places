@@ -10,7 +10,7 @@ import 'babel-polyfill';
 
 function* addPlace(action) {
 	try {
-		const uid = yield select(state => state.auth.user.uid);
+		const uid = yield select(state => state.auth.uid);
 		const newPlaceKey = firebaseDb.ref().child('places').push().key;
 		const updates = { [`/user-places/${uid}/${newPlaceKey}`]: action.payload };
 		yield firebaseDb.ref().update(updates);
@@ -27,7 +27,7 @@ function* addPlace(action) {
 
 function* deletePlace(action) {
 	try {
-		const uid = yield select(state => state.auth.user.uid);
+		const uid = yield select(state => state.auth.uid);
 		yield firebaseDb.ref(`/user-places/${uid}`).child(action.payload).remove();
 		yield history.push('/');
 		yield put(deletePlaceSuccess(action.payload));
@@ -38,7 +38,7 @@ function* deletePlace(action) {
 
 function* fetchPlaces() {
 	try {
-		const uid = yield select(state => state.auth.user.uid);
+		const uid = yield select(state => state.auth.uid);
 		const places = yield firebaseDb.ref(`/user-places/${uid}`).once('value');
 		yield put(fetchPlacesSuccess(places.val()));
 	} catch (error) {
