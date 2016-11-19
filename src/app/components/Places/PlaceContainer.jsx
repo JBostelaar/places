@@ -6,11 +6,22 @@ import Button from 'app/components/elements/Button';
 import Icon from 'app/components/elements/Icon';
 import foodIcon from 'app/images/food.svg';
 import deleteIcon from 'app/images/delete.svg';
-import { fetchPlaces } from 'app/actions/places';
+import { fetchPlaces, deletePlace } from 'app/actions/places';
 
 export class PlaceContainer extends React.Component {
-	componentDidMount() {
-		this.props.fetchPlaces(this.props.user.uid);
+	constructor() {
+		super();
+
+		this.deletePlace = this.deletePlace.bind(this);
+	}
+
+	componentWillMount() {
+		if (this.props.places) return;
+		this.props.fetchPlaces();
+	}
+
+	deletePlace() {
+		this.props.deletePlace(this.props.routeParams.id);
 	}
 
 	render() {
@@ -36,6 +47,7 @@ export class PlaceContainer extends React.Component {
 					classNames="btn btn--delete btn--icon"
 					label="Verwijderen"
 					icon={deleteIcon}
+					onClick={this.deletePlace}
 				/>
 			</article>
 		);
@@ -45,11 +57,10 @@ export class PlaceContainer extends React.Component {
 PlaceContainer.propTypes = {
 	places: React.PropTypes.object,
 	routeParams: React.PropTypes.object.isRequired,
-	user: React.PropTypes.object,
 	fetchPlaces: React.PropTypes.func.isRequired,
+	deletePlace: React.PropTypes.func.isRequired,
 };
 
 export default connect(state => ({
 	places: state.places.places,
-	user: state.auth.user,
-}), { fetchPlaces })(PlaceContainer);
+}), { fetchPlaces, deletePlace })(PlaceContainer);

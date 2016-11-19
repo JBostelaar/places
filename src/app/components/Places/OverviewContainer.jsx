@@ -16,8 +16,9 @@ export class OverviewContainer extends React.Component {
 		this.changeList = this.changeList.bind(this);
 	}
 
-	componentDidMount() {
-		this.props.fetchPlaces(this.props.user.uid);
+	componentWillMount() {
+		if (this.props.places) return;
+		this.props.fetchPlaces();
 	}
 
 	changeList(activeList) {
@@ -40,7 +41,7 @@ export class OverviewContainer extends React.Component {
 				<OverviewFilter changeList={this.changeList} activeList={activeList} />
 				<section className="places">
 					{array.length ? array.map(place => (
-						<PlaceSummary place={place} key={place.name} />
+						<PlaceSummary place={place} key={place.id} />
 					)) : (
 						<p>Geen places.</p>
 					)}

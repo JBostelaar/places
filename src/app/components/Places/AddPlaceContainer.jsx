@@ -26,14 +26,12 @@ export class AddPlaceContainer extends React.Component {
 	addPlace(e) {
 		e.preventDefault();
 
-		const place = {
+		this.props.addPlace({
 			name: this.refs.name.state.value,
 			region: regions.find(reg => reg.name === this.refs.region.state.value),
 			rating: this.refs.rating ? this.refs.rating.state.value : 0,
 			visited: this.refs.visited.state.value,
-		};
-
-		this.props.addPlace(place, this.props.uid);
+		});
 	}
 
 	render() {
@@ -53,11 +51,8 @@ export class AddPlaceContainer extends React.Component {
 	}
 }
 
-export default connect(state => ({
-	uid: state.auth.uid,
-}), { addPlace })(AddPlaceContainer);
+export default connect(null, { addPlace })(AddPlaceContainer);
 
 AddPlaceContainer.propTypes = {
 	addPlace: React.PropTypes.func,
-	uid: React.PropTypes.string,
 };

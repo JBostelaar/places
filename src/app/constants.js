@@ -15,3 +15,7 @@ export const CLEAR_PLACES = 'places/clear';
 export const ADD_PLACE = 'places/add';
 export const ADD_PLACE_SUCCESS = 'places/add.success';
 export const ADD_PLACE_FAILED = 'places/add.failed';
+
+export const DELETE_PLACE = 'places/delete';
+export const DELETE_PLACE_SUCCESS = 'places/delete.success';
+export const DELETE_PLACE_FAILED = 'places/delete.failed';

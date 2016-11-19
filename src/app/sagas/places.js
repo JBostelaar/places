@@ -1,21 +1,21 @@
 import * as c from 'app/constants';
 import { browserHistory as history } from 'react-router';
-import { fork, put, take } from 'redux-saga/effects';
+import { takeEvery } from 'redux-saga';
+import { fork, put, select } from 'redux-saga/effects';
 import { firebaseDb } from 'app/utils/firebase';
 import { addPlaceSuccess, addPlaceFailed,
-	fetchPlacesSuccess, fetchPlacesFailed } from 'app/actions/places';
+	fetchPlacesSuccess, fetchPlacesFailed,
+	deletePlaceSuccess, deletePlaceFailed } from 'app/actions/places';
 import 'babel-polyfill';
 
-function* addPlace({ place, uid }) {
+function* addPlace(action) {
 	try {
+		const uid = yield select(state => state.auth.user.uid);
 		const newPlaceKey = firebaseDb.ref().child('places').push().key;
-		const updates = {
-			[`/places/${newPlaceKey}`]: place,
-			[`/user-places/${uid}/${newPlaceKey}`]: place,
-		};
+		const updates = { [`/user-places/${uid}/${newPlaceKey}`]: action.payload };
 		yield firebaseDb.ref().update(updates);
 
-		const newPlace = { [newPlaceKey]: place };
+		const newPlace = { [newPlaceKey]: action.payload };
 		newPlace[newPlaceKey].id = newPlaceKey;
 		yield put(addPlaceSuccess(newPlace));
 
@@ -25,8 +25,20 @@ function* addPlace({ place, uid }) {
 	}
 }
 
-function* fetchPlaces(uid) {
+function* deletePlace(action) {
 	try {
+		const uid = yield select(state => state.auth.user.uid);
+		yield firebaseDb.ref(`/user-places/${uid}`).child(action.payload).remove();
+		yield history.push('/');
+		yield put(deletePlaceSuccess(action.payload));
+	} catch (error) {
+		yield put(deletePlaceFailed(error));
+	}
+}
+
+function* fetchPlaces() {
+	try {
+		const uid = yield select(state => state.auth.user.uid);
 		const places = yield firebaseDb.ref(`/user-places/${uid}`).once('value');
 		yield put(fetchPlacesSuccess(places.val()));
 	} catch (error) {
@@ -36,21 +48,20 @@ function* fetchPlaces(uid) {
 
 // WATCHERS
 function* watchAddPlace() {
-	while (true) {
-		const { payload } = yield take(c.ADD_PLACE);
-		yield fork(addPlace, payload);
-	}
+	yield* takeEvery(c.ADD_PLACE, addPlace);
+}
+
+function* watchDeletePlace() {
+	yield* takeEvery(c.DELETE_PLACE, deletePlace);
 }
 
 function* watchFetchPlaces() {
-	while (true) {
-		const { payload } = yield take(c.FETCH_PLACES);
-		yield fork(fetchPlaces, payload);
-	}
+	yield* takeEvery(c.FETCH_PLACES, fetchPlaces);
 }
 
 // AUTH SAGAS
 export const placesSagas = [
 	fork(watchAddPlace),
+	fork(watchDeletePlace),
 	fork(watchFetchPlaces),
 ];
