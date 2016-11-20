@@ -2,14 +2,10 @@ import React from 'react';
 import { Link } from 'react-router';
 import Icon from 'app/components/elements/Icon';
 import fireIcon from 'app/images/fire.svg';
-import foodIcon from 'app/images/food.svg';
 
 const PlaceSummary = ({ place }) => (
 	<article className="place-summary">
 		<Link to={`places/${place.id}`}>
-			<div className="place-summary__category">
-				<Icon svg={foodIcon} />
-			</div>
 			<div className="place-summary__meta">
 				<h3 className="place-summary__title">{place.name}</h3>
 				<span className="place-summary__region">{place.region.label}</span>

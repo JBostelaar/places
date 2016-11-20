@@ -2,6 +2,8 @@
 	width: 100%;
 	border-bottom: 1px solid #e8e8e8;
 	height: 85px;
+	padding: 0 20px;
+	box-sizing: border-box;
 
 	a {
 		text-decoration: none;
@@ -35,27 +37,26 @@
 	}
 
 	&__rating {
-		width: 85px;
+		width: 29px;
 		display: flex;
 		justify-content: center;
 	}
 
 	&__score {
-		margin-right: 4px;
 		font-size: 20px;
 		color: #333;
 	}
 
 	&__icon {
 		margin-left: 5px;
-		width: 10px;
 	}
 
 	&__no-score {
 		display: block;
 		width: 10px;
 		height: 10px;
-		background: #F5A623;
+		background: #ccc;
 		border-radius: 100%;
+		margin: 0 auto;
 	}
 }
