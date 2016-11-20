@@ -1,0 +1,44 @@
+.profile {
+	&__header {
+		display: flex;
+		margin-bottom: 20px;
+		padding: 20px;
+	}
+
+	&__picture {
+		overflow: hidden;
+		border-radius: 100%;
+		width: 50px;
+		height: 50px;
+	}
+
+	&__meta {
+		padding-left: 20px;
+
+		h3 {
+			margin: 0;
+		}
+
+		p {
+			margin: 0;
+		}
+	}
+
+	&__actions {
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			border-top: 1px solid #eee;
+		}
+
+		li {
+			display: block;
+			height: 50px;
+			line-height: 50px;
+			padding: 0 20px;
+			color: $c-primary;
+			border-bottom: 1px solid #eee;
+		}
+	}
+}
