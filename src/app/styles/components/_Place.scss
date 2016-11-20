@@ -2,8 +2,15 @@
 	padding: 20px;
 
 	&__header {
-		display: flex;
 		margin-bottom: 20px;
+		position: relative;
+		@include clearfix;
+	}
+
+	&__navigation {
+		position: absolute;
+		right: 0;
+		top: 5px;
 	}
 
 	&__icon {

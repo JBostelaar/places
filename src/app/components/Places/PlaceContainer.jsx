@@ -2,17 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Loader from 'app/components/elements/Loader';
 import Rating from 'app/components/elements/Rating';
-import Button from 'app/components/elements/Button';
 import Icon from 'app/components/elements/Icon';
-import foodIcon from 'app/images/food.svg';
-import deleteIcon from 'app/images/delete.svg';
-import { fetchPlaces, deletePlace } from 'app/actions/places';
+import navigationIcon from 'app/images/navigation.svg';
+import { fetchPlaces } from 'app/actions/places';
+import { showModal } from 'app/actions/modal';
 
 export class PlaceContainer extends React.Component {
 	constructor() {
 		super();
 
-		this.deletePlace = this.deletePlace.bind(this);
+		this.showOptions = this.showOptions.bind(this);
 	}
 
 	componentWillMount() {
@@ -20,8 +19,8 @@ export class PlaceContainer extends React.Component {
 		this.props.fetchPlaces();
 	}
 
-	deletePlace() {
-		this.props.deletePlace(this.props.routeParams.id);
+	showOptions() {
+		this.props.showModal('PLACE_OPTIONS', { id: this.props.routeParams.id });
 	}
 
 	render() {
@@ -32,23 +31,19 @@ export class PlaceContainer extends React.Component {
 		const place = places[routeParams.id];
 		return (
 			<article className="place">
-				<header className="place__header">
-					<Icon svg={foodIcon} className="place__icon" />
-					<div className="place__meta">
-						<h2 className="place__title">{place.name}</h2>
-						<p className="place__region">{place.region.label}</p>
-						<Rating fixed rating={place.rating} />
-					</div>
+				<header className="place__header" >
+					<h2 className="place__title">{place.name}</h2>
+					<p className="place__region">{place.region.label}</p>
+					<Rating fixed rating={place.rating} />
+					<Icon
+						svg={navigationIcon}
+						className="place__navigation"
+						onClick={this.showOptions}
+					/>
 				</header>
 				<section className="place__body">
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				</section>
-				<Button
-					classNames="btn btn--delete btn--icon"
-					label="Verwijderen"
-					icon={deleteIcon}
-					onClick={this.deletePlace}
-				/>
 			</article>
 		);
 	}
@@ -58,9 +53,8 @@ PlaceContainer.propTypes = {
 	places: React.PropTypes.object,
 	routeParams: React.PropTypes.object.isRequired,
 	fetchPlaces: React.PropTypes.func.isRequired,
-	deletePlace: React.PropTypes.func.isRequired,
 };
 
 export default connect(state => ({
 	places: state.places.places,
-}), { fetchPlaces, deletePlace })(PlaceContainer);
+}), { fetchPlaces, showModal })(PlaceContainer);

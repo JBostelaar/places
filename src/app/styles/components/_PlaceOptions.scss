@@ -1,0 +1,12 @@
+.place-options {
+	width: 140px;
+
+	.btn {
+		width: 140px;
+		margin-bottom: 10px;
+
+		&:last-of-type {
+			margin: 0;
+		}
+	}
+}

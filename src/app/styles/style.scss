@@ -1,6 +1,7 @@
 @import '../../../node_modules/normalize.css/normalize';
 
 @import 'variables';
+@import 'mixins';
 @import 'layout';
 @import 'base';
 
@@ -8,6 +9,7 @@
 @import 'components/Login';
 @import 'components/OverviewFilter';
 @import 'components/SelectRegion';
+@import 'components/PlaceOptions';
 @import 'components/PlaceSummary';
 @import 'components/Place';
 @import 'components/Header';
@@ -17,3 +19,4 @@
 @import 'components/Rating';
 @import 'components/Toggle';
 @import 'components/Loader';
+@import 'components/Modal';

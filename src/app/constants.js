@@ -19,3 +19,6 @@ export const ADD_PLACE_FAILED = 'places/add.failed';
 export const DELETE_PLACE = 'places/delete';
 export const DELETE_PLACE_SUCCESS = 'places/delete.success';
 export const DELETE_PLACE_FAILED = 'places/delete.failed';
+
+export const SHOW_MODAL = 'modal/show';
+export const HIDE_MODAL = 'modal/hide';

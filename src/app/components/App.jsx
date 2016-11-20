@@ -1,10 +1,12 @@
 import React from 'react';
 import Header from 'app/components/Header';
+import ModalContainer from 'app/components/ModalContainer';
 
 const App = ({ children, location }) => (
 	<main>
 		<Header path={location.pathname} />
 		{children}
+		<ModalContainer />
 	</main>
 );
 

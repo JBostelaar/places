@@ -4,7 +4,7 @@ const Icon = ({ svg, onClick, className }) => (
 	<span
 		dangerouslySetInnerHTML={{ __html: svg }}
 		onClick={onClick}
-		className={`icon ${className ? className : ''}`}
+		className={className ? `icon ${className}` : 'icon'}
 	></span>
 );
 
