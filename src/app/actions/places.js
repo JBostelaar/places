@@ -24,6 +24,18 @@ export function addPlaceFailed() {
 	return { type: c.ADD_PLACE_FAILED };
 }
 
+export function updatePlace(place) {
+	return { type: c.UPDATE_PLACE, payload: place };
+}
+
+export function updatePlaceSuccess(place) {
+	return { type: c.UPDATE_PLACE_SUCCESS, payload: place };
+}
+
+export function updatePlaceFailed() {
+	return { type: c.UPDATE_PLACE_FAILED };
+}
+
 export function deletePlace(id) {
 	return { type: c.DELETE_PLACE, payload: id };
 }

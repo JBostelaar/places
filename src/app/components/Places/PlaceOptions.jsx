@@ -44,7 +44,7 @@ class PlaceOptions extends React.Component {
 							className="action-menu__item action-menu__dismiss"
 							onClick={this.props.hideModal}
 						>
-							Anulleren
+							Annuleren
 						</li>
 					</ul>
 				</section>

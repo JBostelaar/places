@@ -25,6 +25,16 @@ export default function placesReducer(state = initialState, action) {
 		return { places };
 	}
 
+	if (action.type === c.UPDATE_PLACE_SUCCESS) {
+		const places = {
+			...state.places,
+			[action.payload.id]: {
+				...action.payload,
+			},
+		};
+		return { places };
+	}
+
 	if (action.type === c.DELETE_PLACE_SUCCESS) {
 		delete state.places[action.payload];
 		const places = {

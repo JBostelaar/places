@@ -5,7 +5,8 @@ import { fork, put, select } from 'redux-saga/effects';
 import { firebaseDb } from 'app/utils/firebase';
 import { addPlaceSuccess, addPlaceFailed,
 	fetchPlacesSuccess, fetchPlacesFailed,
-	deletePlaceSuccess, deletePlaceFailed } from 'app/actions/places';
+	deletePlaceSuccess, deletePlaceFailed,
+	updatePlaceSuccess, updatePlaceFailed } from 'app/actions/places';
 import 'babel-polyfill';
 
 function* addPlace(action) {
@@ -22,6 +23,17 @@ function* addPlace(action) {
 		yield history.push('/');
 	} catch (error) {
 		yield put(addPlaceFailed(error));
+	}
+}
+
+function* updatePlace(action) {
+	try {
+		const uid = yield select(state => state.auth.uid);
+		const updates = { [`/user-places/${uid}/${action.payload.id}`]: action.payload };
+		yield firebaseDb.ref().update(updates);
+		yield put(updatePlaceSuccess(action.payload));
+	} catch (error) {
+		yield put(updatePlaceFailed(error));
 	}
 }
 
@@ -55,6 +67,10 @@ function* watchDeletePlace() {
 	yield* takeEvery(c.DELETE_PLACE, deletePlace);
 }
 
+function* watchUpdatePlaces() {
+	yield* takeEvery(c.UPDATE_PLACE, updatePlace);
+}
+
 function* watchFetchPlaces() {
 	yield* takeEvery(c.FETCH_PLACES, fetchPlaces);
 }
@@ -64,4 +80,5 @@ export const placesSagas = [
 	fork(watchAddPlace),
 	fork(watchDeletePlace),
 	fork(watchFetchPlaces),
+	fork(watchUpdatePlaces),
 ];

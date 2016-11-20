@@ -37,3 +37,18 @@
 		width: 22px;
 	}
 }
+
+.rating-modal {
+	width: 300px;
+
+	.rating-field {
+		padding: 30px 20px;
+		margin-bottom: 15px;
+	}
+
+	&__buttons {
+		display: flex;
+		justify-content: space-between;
+		color: #333;
+	}
+}

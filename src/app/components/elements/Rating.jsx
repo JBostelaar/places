@@ -12,6 +12,10 @@ export default class Rating extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
+	componentWillReceiveProps(props) {
+		this.handleChange(props.rating);
+	}
+
 	handleChange(rating) {
 		this.setState({ value: rating });
 	}
@@ -45,3 +49,8 @@ export default class Rating extends React.Component {
 		);
 	}
 }
+
+Rating.propTypes = {
+	rating: React.PropTypes.number,
+	fixed: React.PropTypes.bool,
+};
