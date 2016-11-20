@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import 'app/styles/style.scss';
+import 'react-fastclick';
 
 const history = syncHistoryWithStore(browserHistory, store);
 

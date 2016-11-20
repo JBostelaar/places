@@ -1,0 +1,42 @@
+.action-menu {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	transform: translateY(-170px);
+	transition: all .3s ease;
+
+	&__item {
+		display: block;
+		height: 60px;
+		line-height: 60px;
+		padding: 0 20px;
+		background: #fafafa;
+		position: relative;
+		z-index: 1;
+
+		.icon {
+			width: 13px;
+			height: 13px;
+			margin-right: 5px;
+		}
+	}
+
+	&__dismiss {
+		text-align: center;
+		color: $c-primary;
+		background: #fff;
+		box-shadow: 0 0 12px rgba(0,0,0,.1);
+		position: relative;
+		z-index: 0;
+		height: 50px;
+		line-height: 50px;
+		transform: translateY(-55px);
+		transition: all .3s ease .2s;
+	}
+}
+
+.ReactModal__Content--after-open {
+	.action-menu, .action-menu__dismiss {
+		transform: translateY(0);
+	}
+}

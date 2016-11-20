@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import { deletePlace } from 'app/actions/places';
 import deleteIcon from 'app/images/delete.svg';
 import editIcon from 'app/images/edit.svg';
-import Button from 'app/components/elements/Button';
+import Icon from 'app/components/elements/Icon';
 
 class PlaceOptions extends React.Component {
 	constructor() {
@@ -29,22 +29,24 @@ class PlaceOptions extends React.Component {
 			<Modal
 				isOpen
 				onRequestClose={this.props.hideModal}
-				className="modal"
+				className="modal modal--full"
 				overlayClassName="modal-backdrop"
 			>
 				<section className="place-options">
-					<Button
-						classNames="btn btn--inverted btn--icon"
-						label="Bewerken"
-						icon={editIcon}
-						onClick={this.editPlace}
-					/>
-					<Button
-						classNames="btn btn--delete btn--icon"
-						label="Verwijderen"
-						icon={deleteIcon}
-						onClick={this.deletePlace}
-					/>
+					<ul className="action-menu">
+						<li className="action-menu__item" onClick={this.editPlace}>
+							<Icon svg={editIcon} /> Bewerken
+						</li>
+						<li className="action-menu__item" onClick={this.deletePlace}>
+							<Icon svg={deleteIcon} /> Verwijderen
+						</li>
+						<li
+							className="action-menu__item action-menu__dismiss"
+							onClick={this.props.hideModal}
+						>
+							Anulleren
+						</li>
+					</ul>
 				</section>
 			</Modal>
 		);
