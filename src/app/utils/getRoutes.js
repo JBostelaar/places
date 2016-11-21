@@ -30,7 +30,11 @@ const getRoutes = (store) => (
 				{
 					component: Profile,
 					path: '/profile',
-				}
+				},
+				{
+					component: AddPlaceContainer,
+					path: '/edit/:id',
+				},
 			],
 		},
 		{

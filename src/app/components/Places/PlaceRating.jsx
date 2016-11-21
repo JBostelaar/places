@@ -6,21 +6,30 @@ import Rating from 'app/components/elements/Rating';
 import Button from 'app/components/elements/Button';
 
 class PlaceRating extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
+		this.state = {
+			rating: props.place.rating,
+		};
+
+		this.handleChange = this.handleChange.bind(this);
 		this.setRating = this.setRating.bind(this);
 	}
 
 	setRating() {
 		const place = {
 			...this.props.place,
-			rating: this.refs.rating ? this.refs.rating.state.value : 0,
+			rating: this.state.rating,
 			visited: true,
 		};
 
 		this.props.updatePlace(place);
 		this.props.hideModal();
+	}
+
+	handleChange(rating) {
+		this.setState({ rating });
 	}
 
 	render() {
@@ -32,7 +41,7 @@ class PlaceRating extends React.Component {
 				overlayClassName="modal-backdrop modal-backdrop--center"
 			>
 				<div className="rating-modal">
-					<Rating ref="rating" />
+					<Rating value={this.state.rating} handleChange={this.handleChange} />
 					<div className="rating-modal__buttons">
 						<Button label="Annuleren" onClick={this.props.hideModal} />
 						<Button label="Bevestigen" className="btn" onClick={this.setRating} />

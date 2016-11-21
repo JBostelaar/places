@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
+import { browserHistory } from 'react-router';
 import { deletePlace } from 'app/actions/places';
 import deleteIcon from 'app/images/delete.svg';
 import editIcon from 'app/images/edit.svg';
@@ -15,8 +16,8 @@ class PlaceOptions extends React.Component {
 	}
 
 	editPlace() {
-		// TODO: Fix EditPlace function
-		console.info('edit place');
+		browserHistory.push(`/edit/${this.props.id}`);
+		this.props.hideModal();
 	}
 
 	deletePlace() {

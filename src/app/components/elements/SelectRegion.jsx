@@ -7,7 +7,7 @@ const SelectRegion = ({ options, onClick, value }) => (
 		<div className="select-region__options">
 			{options.map(option => (
 				<a
-					key={option.name} onClick={() => onClick(option.name)}
+					key={option.name} onClick={() => onClick(option.name, 'region')}
 					className={classNames({ active: option.name === value })}
 				>
 					{option.label}

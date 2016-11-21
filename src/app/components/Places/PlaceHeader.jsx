@@ -7,7 +7,7 @@ const PlaceHeader = ({ place, openOptions }) => (
 	<header className="place__header" >
 		<h2 className="place__title">{place.name}</h2>
 		<p className="place__region">{place.region.label}</p>
-		<Rating fixed rating={place.rating} />
+		<Rating fixed value={place.rating} />
 		<Icon
 			svg={navigationIcon}
 			className="place__navigation"
