@@ -1,38 +1,23 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export default class Toggle extends React.Component {
-	constructor() {
-		super();
-
-		this.state = { value: false };
-		this.handleChange = this.handleChange.bind(this);
-	}
-
-	handleChange() {
-		this.setState({ value: !this.state.value });
-
-		if (this.props.toggleVisited) this.props.toggleVisited();
-	}
-
-	render() {
-		const { label } = this.props;
-		const classes = classNames('toggle', {
-			'toggle--active': this.state.value,
-		});
-
-		return (
-			<div className="toggle-field">
-				{label ? (
-					<label>{label}</label>
-				) : ''}
-				<div className={classes} onClick={this.handleChange}></div>
-			</div>
-		);
-	}
-}
+const Toggle = ({ onChange, label, value }) => (
+	<div className="toggle-field">
+		{label ? (
+			<label>{label}</label>
+		) : ''}
+		<div
+			className={classNames('toggle', {
+				'toggle--active': value,
+			})} onClick={onChange}
+		></div>
+	</div>
+);
 
 Toggle.propTypes = {
 	label: React.PropTypes.string,
-	toggleVisited: React.PropTypes.func,
+	value: React.PropTypes.bool,
+	onChange: React.PropTypes.func,
 };
+
+export default Toggle;

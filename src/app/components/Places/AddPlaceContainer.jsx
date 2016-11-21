@@ -30,7 +30,7 @@ export class AddPlaceContainer extends React.Component {
 			name: this.refs.name.state.value,
 			region: regions.find(reg => reg.name === this.refs.region.state.value),
 			rating: this.refs.rating ? this.refs.rating.state.value : 0,
-			visited: this.refs.visited.state.value,
+			visited: this.state.visited,
 		});
 	}
 
@@ -38,13 +38,13 @@ export class AddPlaceContainer extends React.Component {
 		return (
 			<section className="add-place">
 				<form onSubmit={this.addPlace}>
-					<Input name="name" type="text" ref="name" label="Naam" />
+					<Input name="name" type="text" label="Naam" />
 					<SelectRegion name="region" options={regions} ref="region" />
-					<Toggle ref="visited" toggleVisited={this.toggleVisited} label="Bezocht" />
+					<Toggle onChange={this.toggleVisited} label="Bezocht" value={this.state.visited} />
 					{this.state.visited ? (
 						<Rating ref="rating" />
 					) : null}
-					<button className="add-place__submit">Toevoegen</button>
+					<button type="submit" className="add-place__submit">Toevoegen</button>
 				</form>
 			</section>
 		);
