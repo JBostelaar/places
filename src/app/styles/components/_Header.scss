@@ -8,10 +8,13 @@
 	border-bottom: 1px solid #e8e8e8;
 
 	&__title {
-		font-size: 18px;
-		text-align: center;
-		color: $c-primary;
-		margin: 0;
+		text-decoration: none;
+		h1 {
+			font-size: 18px;
+			text-align: center;
+			color: $c-primary;
+			margin: 0;
+		}
 	}
 
 	&__add, &__back, &__profile {

@@ -17,7 +17,11 @@ const Header = ({ path }) => (
 				<Icon svg={profileIcon} />
 			</Link>
 		)}
-		<h1 className="header__title">Places</h1>
+
+		<Link to="/" className="header__title">
+			<h1>Places</h1>
+		</Link>
+
 		<Link to="/add" className="header__add">
 			<Icon svg={addIcon} />
 		</Link>
