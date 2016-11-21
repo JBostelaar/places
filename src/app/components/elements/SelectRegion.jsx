@@ -1,43 +1,26 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export default class SelectRegion extends React.Component {
-	constructor() {
-		super();
-
-		this.state = {
-			value: null,
-		};
-		this.onClick = this.onClick.bind(this);
-	}
-
-	onClick(e) {
-		this.setState({ value: e.target.dataset.value });
-	}
-
-	render() {
-		const { options } = this.props;
-
-		return (
-			<div className="select-region">
-				<label>Wijk</label>
-				<div className="select-region__options">
-					{options.map(option => (
-						<a
-							data-value={option.name} key={option.name}
-							className={classNames({ active: option.name === this.state.value })}
-							onClick={this.onClick}
-						>
-							{option.label}
-						</a>
-					))}
-				</div>
-			</div>
-		);
-	}
-}
+const SelectRegion = ({ options, onClick, value }) => (
+	<div className="select-region">
+		<label>Wijk</label>
+		<div className="select-region__options">
+			{options.map(option => (
+				<a
+					key={option.name} onClick={() => onClick(option.name)}
+					className={classNames({ active: option.name === value })}
+				>
+					{option.label}
+				</a>
+			))}
+		</div>
+	</div>
+);
 
 SelectRegion.propTypes = {
-	name: React.PropTypes.string,
+	value: React.PropTypes.string,
 	options: React.PropTypes.array,
+	onClick: React.PropTypes.func,
 };
+
+export default SelectRegion;

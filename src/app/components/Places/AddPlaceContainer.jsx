@@ -13,14 +13,20 @@ export class AddPlaceContainer extends React.Component {
 
 		this.state = {
 			visited: false,
+			region: null,
 		};
 
 		this.addPlace = this.addPlace.bind(this);
 		this.toggleVisited = this.toggleVisited.bind(this);
+		this.selectRegion = this.selectRegion.bind(this);
 	}
 
 	toggleVisited() {
 		this.setState({ visited: !this.state.visited });
+	}
+
+	selectRegion(region) {
+		this.setState({ region });
 	}
 
 	addPlace(e) {
@@ -28,20 +34,21 @@ export class AddPlaceContainer extends React.Component {
 
 		this.props.addPlace({
 			name: this.refs.name.state.value,
-			region: regions.find(reg => reg.name === this.refs.region.state.value),
+			region: regions.find(reg => reg.name === this.state.region),
 			rating: this.refs.rating ? this.refs.rating.state.value : 0,
 			visited: this.state.visited,
 		});
 	}
 
 	render() {
+		const { region, visited } = this.state;
 		return (
 			<section className="add-place">
 				<form onSubmit={this.addPlace}>
 					<Input name="name" type="text" label="Naam" />
-					<SelectRegion name="region" options={regions} ref="region" />
-					<Toggle onChange={this.toggleVisited} label="Bezocht" value={this.state.visited} />
-					{this.state.visited ? (
+					<SelectRegion options={regions} value={region} onClick={this.selectRegion} />
+					<Toggle onChange={this.toggleVisited} label="Bezocht" value={visited} />
+					{visited ? (
 						<Rating ref="rating" />
 					) : null}
 					<button type="submit" className="add-place__submit">Toevoegen</button>
